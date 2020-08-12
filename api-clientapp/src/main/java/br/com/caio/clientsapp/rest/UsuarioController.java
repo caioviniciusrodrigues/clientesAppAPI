@@ -29,9 +29,8 @@ public class UsuarioController {
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public void salvar( @RequestBody @Valid Usuario usuario ) {		
-		try {
-			String senhaCriptografada = passwordEncoder.encode(usuario.getPassword());
-			usuario.setPassword(senhaCriptografada);
+		try {			
+			usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
 			usuarioService.salvar(usuario);		
 		} catch (UsuarioCadastradoExcepetion e) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
