@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>br.com.caio.clientsapp</groupId>
 	<artifactId>api-clientapp</artifactId>
-	<version>1.0.0.6</version>
+	<version>1.0.0.7</version>
 	<name>api-clientapp</name>
 	<description>Api clientsapp</description>
 
@@ -46,16 +46,11 @@
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
 
-<!-- 		<dependency>
-			<groupId>org.springframework.security.oauth.boot</groupId>
-			<artifactId>spring-security-oauth2-autoconfigure</artifactId>
-			<version>2.0.1.RELEASE</version>
-		</dependency>
- -->
+
 		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-jwt</artifactId>
-			<version>1.1.0.RELEASE</version>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
+			<version>0.9.1</version>
 		</dependency>
 
 

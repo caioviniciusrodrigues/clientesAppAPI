@@ -1,4 +1,4 @@
-package br.com.caio.clientsapp.config;
+package br.com.caio.clientsapp.config.security;
 import java.util.Arrays;
 import java.util.List;
 
@@ -11,7 +11,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
 @Configuration
-public class WebConfig {
+public class WebConfigCors {
 
     @Bean
     public FilterRegistrationBean<CorsFilter> corsFilterFilterRegistrationBean(){
