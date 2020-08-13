@@ -6,7 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import br.com.caio.clientsapp.model.Cliente;
+import br.com.caio.clientsapp.model.entity.Cliente;
 import br.com.caio.clientsapp.repository.ClienteRepository;
 
 @SpringBootApplication

@@ -5,10 +5,12 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import br.com.caio.clientsapp.exception.SenhaInvalidaException;
 import br.com.caio.clientsapp.exception.UsuarioCadastradoExcepetion;
-import br.com.caio.clientsapp.model.Usuario;
+import br.com.caio.clientsapp.model.entity.Usuario;
 import br.com.caio.clientsapp.repository.UsuarioRepository;
 
 @Service
@@ -16,6 +18,9 @@ public class UsuarioService implements UserDetailsService {
 	
 	@Autowired
 	private UsuarioRepository usuarioRepository;
+
+    @Autowired
+    private PasswordEncoder encoder;
 	
 	public Usuario salvar(Usuario usuario) {
 		boolean exists = usuarioRepository.existsByUsername(usuario.getUsername());
@@ -25,6 +30,17 @@ public class UsuarioService implements UserDetailsService {
 		return usuarioRepository.save(usuario);
 		
 	}
+	
+   public UserDetails autenticar( Usuario usuario ){
+        UserDetails user = loadUserByUsername(usuario.getUsername());
+        boolean senhasBatem = encoder.matches( usuario.getPassword(), user.getPassword() );
+
+        if(senhasBatem){
+            return user;
+        }
+
+        throw new SenhaInvalidaException();
+    }
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {		

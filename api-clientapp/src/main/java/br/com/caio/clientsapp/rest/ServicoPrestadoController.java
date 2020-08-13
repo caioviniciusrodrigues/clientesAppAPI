@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-import br.com.caio.clientsapp.model.Cliente;
-import br.com.caio.clientsapp.model.ServicoPrestado;
+import br.com.caio.clientsapp.model.entity.Cliente;
+import br.com.caio.clientsapp.model.entity.ServicoPrestado;
 import br.com.caio.clientsapp.repository.ClienteRepository;
 import br.com.caio.clientsapp.repository.ServicoPrestadoRepository;
 import br.com.caio.clientsapp.rest.dto.ServicoPrestadoDTO;

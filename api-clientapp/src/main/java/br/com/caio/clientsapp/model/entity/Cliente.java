@@ -1,4 +1,4 @@
-package br.com.caio.clientsapp.model;
+package br.com.caio.clientsapp.model.entity;
 
 import java.time.LocalDate;
 

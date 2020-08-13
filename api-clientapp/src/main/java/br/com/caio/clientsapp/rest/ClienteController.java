@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-import br.com.caio.clientsapp.model.Cliente;
+import br.com.caio.clientsapp.model.entity.Cliente;
 import br.com.caio.clientsapp.repository.ClienteRepository;
 
 @RestController

@@ -1,4 +1,4 @@
-package br.com.caio.clientsapp.model;
+package br.com.caio.clientsapp.model.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -23,6 +23,13 @@ public class Usuario {
 	private String password;
 
 	public Usuario() {
+	}
+
+	public Usuario(@NotEmpty(message = "{campo.login.obrigatorio}") String username,
+			@NotEmpty(message = "{campo.senha.obrigatorio}") String password) {
+		super();
+		this.username = username;
+		this.password = password;
 	}
 
 	public Long getId() {

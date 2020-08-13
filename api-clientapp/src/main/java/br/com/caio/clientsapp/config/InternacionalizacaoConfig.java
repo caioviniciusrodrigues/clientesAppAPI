@@ -1,4 +1,4 @@
-package br.com.caio.clientsapp.config.message;
+package br.com.caio.clientsapp.config;
 
 import java.util.Locale;
 
