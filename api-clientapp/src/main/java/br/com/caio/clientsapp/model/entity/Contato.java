@@ -61,7 +61,7 @@ public class Contato implements Serializable {
 		this.email = email;
 	}
 
-	public boolean isFavorito() {
+	public boolean getFavorito() {
 		return favorito;
 	}
 
