@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>br.com.caio.clientsapp</groupId>
 	<artifactId>api-clientapp</artifactId>
-	<version>1.0.0.10</version>
+	<version>1.0.0.11</version>
 	<name>api-clientapp</name>
 	<description>Api clientsapp</description>
 

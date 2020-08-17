@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 
 @Entity
 public class Contato implements Serializable {
@@ -26,6 +27,10 @@ public class Contato implements Serializable {
 
 	@Column
 	private boolean favorito;
+
+	@Column
+	@Lob
+	private byte[] foto;
 
 	public Contato() {
 	}
@@ -67,6 +72,14 @@ public class Contato implements Serializable {
 
 	public void setFavorito(boolean favorito) {
 		this.favorito = favorito;
+	}
+
+	public byte[] getFoto() {
+		return foto;
+	}
+
+	public void setFoto(byte[] foto) {
+		this.foto = foto;
 	}
 
 	@Override
