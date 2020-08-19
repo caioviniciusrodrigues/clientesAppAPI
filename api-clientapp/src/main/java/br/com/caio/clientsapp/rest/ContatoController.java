@@ -9,6 +9,8 @@ import javax.servlet.http.Part;
 
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -45,8 +47,12 @@ public class ContatoController {
 	}
 	
 	@GetMapping
-	public List<Contato> list() {
-		return contatoRepository.findAll();
+	public Page<Contato> list( 
+			@RequestParam(value = "page", defaultValue = "0") Integer pagina, 
+			@RequestParam(value = "size", defaultValue = "10") Integer tamanhoPagina ) 
+	{
+		PageRequest pageRequest = PageRequest.of(pagina, tamanhoPagina);
+		return contatoRepository.findAll(pageRequest);
 	}
 	
 	@PatchMapping("{id}/favorito")
@@ -60,14 +66,14 @@ public class ContatoController {
 	}
 	
 	@PutMapping("{id}/foto")
-	public byte[] addPhoto( @PathVariable Long id, @RequestParam("foto") Part arquivo ) {
+	public byte[] addPhoto( @PathVariable Long id, @RequestParam("foto") Part arquivo /* Part interface para leitura IO */ ) {
 		Optional<Contato> contato = contatoRepository.findById(id);
 		
 		return contato.map( c -> {
 			try {
-				InputStream is = arquivo.getInputStream();
-				byte[] bytes = new byte[(int) arquivo.getSize()];
-				IOUtils.readFully(is, bytes);
+				InputStream is = arquivo.getInputStream(); // ler o arquivo 
+				byte[] bytes = new byte[(int) arquivo.getSize()]; //transforma em array de bytes
+				IOUtils.readFully(is, bytes);  // le a entrada e o array
 				c.setFoto(bytes);
 				contatoRepository.save(c);
 				is.close();
